@@ -245,4 +245,13 @@ public class BaseEndpoint {
     return RestUtil.R.ok(MediaType.APPLICATION_JSON_TYPE, serializer.toJson(json));
   }
 
+  @GET
+  @Path("info/maintainance")
+  @RestQuery(name = "getmaintainanceinfo", description = "Returns maintainance info.", returnDescription = "", responses = {
+          @RestResponse(description = "The maintainance info is returned.", responseCode = HttpServletResponse.SC_OK) })
+  public Response getMaintainanceInfo() throws Exception {
+    JValue json = obj(f("in_maintainance", v("true")), f("read_only", v("true")));
+    return RestUtil.R.ok(MediaType.APPLICATION_JSON_TYPE, serializer.toJson(json));
+  }
+
 }
